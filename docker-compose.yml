@@ -170,13 +170,12 @@ services:
     image: nginx:latest
     container_name: nginx
     restart: always
-    # depends_on:
-    #   - api
     ports:
       - "80:80"
     volumes:
-      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./scripts/switch-color.sh:/scripts/switch-color.sh
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:rw,Z
+      - ./scripts/switch-color.sh:/scripts/switch-color.sh:ro
+    tmpfs: /tmp
     networks:
       - alumni-network
     logging:
