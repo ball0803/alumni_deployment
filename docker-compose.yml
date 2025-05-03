@@ -86,6 +86,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: alumni-frontend
+    restart: always
     ports:
       - "5173:5173"
     networks:
@@ -116,10 +117,10 @@ services:
       interval: 5s
       timeout: 3s
       retries: 3
-    # ports:
-    #   - "8080:8080"
     networks:
       - alumni-network
+    volumes:
+      - ./uploads:/app/uploads
     logging:
       driver: loki
       options:
@@ -153,10 +154,10 @@ services:
       interval: 5s
       timeout: 3s
       retries: 3
-    # ports:
-    #   - "8080:8080"
     networks:
       - alumni-network
+    volumes:
+      - ./uploads:/app/uploads
     logging:
       driver: loki
       options:
@@ -191,5 +192,5 @@ volumes:
   loki_data:
 
 networks:
-  backend:
+  alumni-network:
     driver: bridge
