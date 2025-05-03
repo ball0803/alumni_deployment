@@ -1,0 +1,3718 @@
+[2025-05-01 15:10:23Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known config file 'Credentials': '/home/supamongkol_kid/projects/actions-runner/.credentials'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known config file 'Runner': '/home/supamongkol_kid/projects/actions-runner/.runner'
+[2025-05-01 15:10:23Z INFO Worker] Version: 2.323.0
+[2025-05-01 15:10:23Z INFO Worker] Commit: d8b82f44a9ec0258904d5869ae683c31d5aac299
+[2025-05-01 15:10:23Z INFO Worker] Culture: en-US
+[2025-05-01 15:10:23Z INFO Worker] UI Culture: en-US
+[2025-05-01 15:10:23Z INFO Worker] Waiting to receive the job message from the channel.
+[2025-05-01 15:10:23Z INFO ProcessChannel] Receiving message of length 22632, with hash 'df70ad635ed500a9dcf773eb473a4ff657e45245af5e9b667ee7e117a58af800'
+[2025-05-01 15:10:23Z INFO Worker] Message received.
+[2025-05-01 15:10:23Z INFO Worker] Job message:
+ {
+  "environmentVariables": [
+    {
+      "type": 2,
+      "file": 1,
+      "line": 9,
+      "col": 3,
+      "map": [
+        {
+          "key": {
+            "type": 0,
+            "file": 1,
+            "line": 9,
+            "col": 3,
+            "lit": "COMPOSE_FILE"
+          },
+          "value": {
+            "type": 0,
+            "file": 1,
+            "line": 9,
+            "col": 17,
+            "lit": "docker-compose.prod.yml"
+          }
+        }
+      ]
+    }
+  ],
+  "fileTable": [
+    ".github/workflows/prod-deploy.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/checkout",
+        "ref": "v4",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 16,
+        "col": 15,
+        "lit": "Checkout code"
+      },
+      "contextName": "__actions_checkout",
+      "condition": "success()",
+      "id": "775a1366-daa4-4a98-a97f-371a40edc0ac",
+      "name": "__actions_checkout"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 19,
+        "col": 15,
+        "lit": "Create .env file"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 20,
+              "col": 14,
+              "expr": "format('cat <<EOF > .env\nDB_ENV={0}\nNEO4J_LOCAL_URI={1}\nNEO4J_LOCAL_CONTAINER_URI={2}\nNEO4J_LOCAL_USERNAME={3}\nNEO4J_LOCAL_PASSWORD={4}\nNEO4J_LOCAL_CONTAINER_PASSWORD={5}\nNEO4J_AURA_URI={6}\nNEO4J_AURA_USERNAME={7}\nNEO4J_AURA_PASSWORD={8}\nJWT_SECRET_KEY={9}\nAES_ENCRYPTION_KEY={10}\nSENDGUN_API_KEY={11}\nGF_SECURITY_ADMIN_PASSWORD={12}\nSENDER_GMAIL={13}\nSMTP_PASSWORD={14}\nPORT={15}\nENV={16}\nEOF\n', secrets.DB_ENV, secrets.NEO4J_LOCAL_URI, secrets.NEO4J_LOCAL_CONTAINER_URI, secrets.NEO4J_LOCAL_USERNAME, secrets.NEO4J_LOCAL_PASSWORD, secrets.NEO4J_LOCAL_CONTAINER_PASSWORD, secrets.NEO4J_AURA_URI, secrets.NEO4J_AURA_USERNAME, secrets.NEO4J_AURA_PASSWORD, secrets.JWT_SECRET_KEY, secrets.AES_ENCRYPTION_KEY, secrets.SENDGUN_API_KEY, secrets.GF_SECURITY_ADMIN_PASSWORD, secrets.SENDER_GMAIL, secrets.SMTP_PASSWORD, secrets.PORT, secrets.ENV)"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 40,
+              "col": 16,
+              "lit": "bash"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "44e1d756-2b27-4745-99de-19b2a3266adc",
+      "name": "__run"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 42,
+        "col": 15,
+        "lit": "Determine deployment color"
+      },
+      "contextName": "color",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 44,
+              "col": 14,
+              "lit": "# Check which color is currently active\nif docker ps | grep -q \"alumni-api-blue\"; then\n  echo \"NEW_COLOR=green\" >> $GITHUB_ENV\n  echo \"OLD_COLOR=blue\" >> $GITHUB_ENV\nelse\n  echo \"NEW_COLOR=blue\" >> $GITHUB_ENV\n  echo \"OLD_COLOR=green\" >> $GITHUB_ENV\nfi\necho \"Deploying to $NEW_COLOR\"\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "ab5589d7-01fb-4b2c-8a4c-d1fb340b1e80",
+      "name": "color"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 55,
+        "col": 15,
+        "lit": "Build and Deploy new container"
+      },
+      "contextName": "__run_2",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 58,
+              "col": 11,
+              "lit": "docker-compose -f docker-compose.prod.yml --env-file .env up -d --build api-$NEW_COLOR"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "8c20d00a-39f4-44fe-9dd0-ed200e8564a2",
+      "name": "__run_2"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 60,
+        "col": 15,
+        "lit": "Check Health"
+      },
+      "contextName": "__run_3",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 61,
+              "col": 14,
+              "lit": "# docker-compose -f docker-compose.prod.yml --env-file .env up -d api-$NEW_COLOR\n\n# Wait for new container to be healthy\ntimeout 120 bash -c 'while [[ \"$(docker inspect -f \"{{.State.Health.Status}}\" alumni-api-$NEW_COLOR)\" != \"healthy\" ]]; do sleep 5; done' || false\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "16d37108-f3e7-47f3-a405-a5eeb8e8ec4b",
+      "name": "__run_3"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 67,
+        "col": 15,
+        "lit": "Switch traffic"
+      },
+      "contextName": "__run_4",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 68,
+              "col": 14,
+              "lit": "# Make the new container active\ndocker exec nginx /bin/sh /scripts/switch-color.sh\n\n# Verify switch\nCURRENT_COLOR=$(docker exec nginx grep -oP 'server alumni-api-\\K(blue|green)' /etc/nginx/nginx.conf)\nif [ \"$CURRENT_COLOR\" != \"$NEW_COLOR\" ]; then\n  echo \"Color switch failed!\"\n  exit 1\nfi\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "97c04205-4f64-4ec9-b70a-9c5491321d9a",
+      "name": "__run_4"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 79,
+        "col": 15,
+        "lit": "Stop old container"
+      },
+      "contextName": "__run_5",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 80,
+              "col": 14,
+              "lit": "docker-compose stop api-$OLD_COLOR\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "6a418ee2-7895-42ba-96a9-f6967f1df528",
+      "name": "__run_5"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 83,
+        "col": 15,
+        "lit": "Clean up"
+      },
+      "contextName": "__run_6",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 84,
+              "col": 14,
+              "lit": "docker system prune -f\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "1d61cb93-c65a-4940-a0ec-01b621554f3c",
+      "name": "__run_6"
+    }
+  ],
+  "variables": {
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "RunService.FixEmbeddedIssues": {
+      "value": "true"
+    },
+    "actions_add_check_run_id_to_job_context": {
+      "value": "false"
+    },
+    "actions_skip_retry_complete_job_upon_known_errors": {
+      "value": "true"
+    },
+    "actions_uses_cache_service_v2": {
+      "value": "true"
+    },
+    "github_token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.from_run_service": {
+      "value": "true"
+    },
+    "system.github.job": {
+      "value": "deploy"
+    },
+    "system.github.launch_endpoint": {
+      "value": "https://launch.actions.githubusercontent.com"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "true"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Contents\":\"read\",\"Metadata\":\"read\",\"Packages\":\"read\"}"
+    },
+    "system.orchestrationId": {
+      "value": "304f5d7e-5d28-4f59-8904-e467a9c12fd8.deploy.__default"
+    },
+    "system.phaseDisplayName": {
+      "value": "deploy"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    }
+  },
+  "messageType": "RunnerJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "actions",
+    "version": 0,
+    "planId": "304f5d7e-5d28-4f59-8904-e467a9c12fd8",
+    "planGroup": null,
+    "artifactUri": null,
+    "artifactLocation": null,
+    "definition": null,
+    "owner": null
+  },
+  "timeline": {
+    "id": "304f5d7e-5d28-4f59-8904-e467a9c12fd8",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "3eb8d666-c790-5a05-928a-2d934621e90e",
+  "jobDisplayName": "deploy",
+  "jobName": "__default",
+  "requestId": 0,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "",
+          "ServerName": "",
+          "CacheServerUrl": "https://acghubeus2.actions.githubusercontent.com/MPPTUrv1NDafMr740zzkpCZcW7mJbtCXGhbw58GJK0RrJU1Shf/",
+          "FeedStreamUrl": "wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "PipelinesServiceUrl": "https://pipelinesghubeus2.actions.githubusercontent.com/MPPTUrv1NDafMr740zzkpCZcW7mJbtCXGhbw58GJK0RrJU1Shf/",
+          "GenerateIdTokenUrl": ""
+        },
+        "name": "SystemVssConnection",
+        "url": "https://run-actions-3-azure-eastus.actions.githubusercontent.com/91/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": "***"
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/prod"
+        },
+        {
+          "k": "sha",
+          "v": "302f0187a66cf81bc4b25e5994e6cd24a12dfdb7"
+        },
+        {
+          "k": "repository",
+          "v": "ball0803/alumni_api"
+        },
+        {
+          "k": "repository_owner",
+          "v": "ball0803"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "75984960"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/ball0803/alumni_api.git"
+        },
+        {
+          "k": "run_id",
+          "v": "14777790183"
+        },
+        {
+          "k": "run_number",
+          "v": "37"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "actor_id",
+          "v": "75984960"
+        },
+        {
+          "k": "actor",
+          "v": "ball0803"
+        },
+        {
+          "k": "workflow",
+          "v": "Production Deployment"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "prod"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "302f0187a66cf81bc4b25e5994e6cd24a12dfdb7"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "da83ba31946a1e8bdedd6aca23bc491749116dee"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "75984960+ball0803@users.noreply.github.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Camel"
+                              },
+                              {
+                                "k": "username",
+                                "v": "ball0803"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "75984960+ball0803@users.noreply.github.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Camel"
+                              },
+                              {
+                                "k": "username",
+                                "v": "ball0803"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "302f0187a66cf81bc4b25e5994e6cd24a12dfdb7"
+                        },
+                        {
+                          "k": "message",
+                          "v": "Expose upload image path and upload path"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2025-05-01T22:04:54+07:00"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "c99d3676ff54ba604e5dac5bdf9c7dd47c2fe694"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/ball0803/alumni_api/commit/302f0187a66cf81bc4b25e5994e6cd24a12dfdb7"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.com/ball0803/alumni_api/compare/da83ba31946a...302f0187a66c"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "75984960+ball0803@users.noreply.github.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Camel"
+                          },
+                          {
+                            "k": "username",
+                            "v": "ball0803"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "75984960+ball0803@users.noreply.github.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Camel"
+                          },
+                          {
+                            "k": "username",
+                            "v": "ball0803"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "302f0187a66cf81bc4b25e5994e6cd24a12dfdb7"
+                    },
+                    {
+                      "k": "message",
+                      "v": "Expose upload image path and upload path"
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2025-05-01T22:04:54+07:00"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "c99d3676ff54ba604e5dac5bdf9c7dd47c2fe694"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/ball0803/alumni_api/commit/302f0187a66cf81bc4b25e5994e6cd24a12dfdb7"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "75984960+ball0803@users.noreply.github.com"
+                    },
+                    {
+                      "k": "name",
+                      "v": "ball0803"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/prod"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/ball0803/alumni_api.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1730812742.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "ball0803/alumni_api"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/ball0803/alumni_api.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": false
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "homepage",
+                      "v": null
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/ball0803/alumni_api"
+                    },
+                    {
+                      "k": "id",
+                      "v": 883725530.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "Go"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "alumni_api"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDONKyU2g"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/75984960?v=4"
+                          },
+                          {
+                            "k": "email",
+                            "v": "75984960+ball0803@users.noreply.github.com"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/ball0803/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/ball0803/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/ball0803/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/ball0803/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/ball0803"
+                          },
+                          {
+                            "k": "id",
+                            "v": 75984960.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "ball0803"
+                          },
+                          {
+                            "k": "name",
+                            "v": "ball0803"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "MDQ6VXNlcjc1OTg0OTYw"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/ball0803/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/ball0803/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/ball0803/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/ball0803/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/ball0803/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/ball0803"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1746112215.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 239500.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:ball0803/alumni_api.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/ball0803/alumni_api"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2025-04-25T17:42:50Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/repos/ball0803/alumni_api"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/75984960?v=4"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/ball0803/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/ball0803/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/ball0803/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/ball0803/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/ball0803"
+                    },
+                    {
+                      "k": "id",
+                      "v": 75984960.0
+                    },
+                    {
+                      "k": "login",
+                      "v": "ball0803"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "MDQ6VXNlcjc1OTg0OTYw"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/ball0803/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/ball0803/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/ball0803/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/ball0803/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/ball0803/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/ball0803"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "workflow_ref",
+          "v": "ball0803/alumni_api/.github/workflows/prod-deploy.yml@refs/heads/prod"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "302f0187a66cf81bc4b25e5994e6cd24a12dfdb7"
+        },
+        {
+          "k": "repository_id",
+          "v": "883725530"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "ball0803"
+        }
+      ]
+    },
+    "inputs": {
+      "t": 2
+    },
+    "matrix": null,
+    "needs": {
+      "t": 2
+    },
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "vars": {
+      "t": 2
+    }
+  },
+  "billingOwnerId": "U_kgDOBIdwQA"
+}
+[2025-05-01 15:10:23Z INFO JobRunner] Job ID 3eb8d666-c790-5a05-928a-2d934621e90e
+[2025-05-01 15:10:23Z INFO ConfigurationStore] currentAssemblyLocation: /home/supamongkol_kid/projects/actions-runner/bin/Runner.Worker.dll
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO ConfigurationStore] binPath: /home/supamongkol_kid/projects/actions-runner/bin
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO ConfigurationStore] RootFolder: /home/supamongkol_kid/projects/actions-runner
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known config file 'Runner': '/home/supamongkol_kid/projects/actions-runner/.runner'
+[2025-05-01 15:10:23Z INFO ConfigurationStore] ConfigFilePath: /home/supamongkol_kid/projects/actions-runner/.runner
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known config file 'MigratedRunner': '/home/supamongkol_kid/projects/actions-runner/.runner_migrated'
+[2025-05-01 15:10:23Z INFO ConfigurationStore] MigratedConfigFilePath: /home/supamongkol_kid/projects/actions-runner/.runner_migrated
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known config file 'Credentials': '/home/supamongkol_kid/projects/actions-runner/.credentials'
+[2025-05-01 15:10:23Z INFO ConfigurationStore] CredFilePath: /home/supamongkol_kid/projects/actions-runner/.credentials
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known config file 'MigratedCredentials': '/home/supamongkol_kid/projects/actions-runner/.credentials_migrated'
+[2025-05-01 15:10:23Z INFO ConfigurationStore] MigratedCredFilePath: /home/supamongkol_kid/projects/actions-runner/.credentials_migrated
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known config file 'Service': '/home/supamongkol_kid/projects/actions-runner/.service'
+[2025-05-01 15:10:23Z INFO ConfigurationStore] ServiceConfigFilePath: /home/supamongkol_kid/projects/actions-runner/.service
+[2025-05-01 15:10:23Z INFO ConfigurationStore] Read setting file: 299 chars
+[2025-05-01 15:10:23Z INFO JobRunner] Initializing launch client
+[2025-05-01 15:10:23Z INFO JobServerQueue] Initializing results client
+[2025-05-01 15:10:23Z INFO ResultServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2025-05-01 15:10:23Z INFO ResultServer] Attempting to start websocket client with delay 00:00:00.
+[2025-05-01 15:10:23Z INFO JobServerQueue] Start process web console line queue.
+[2025-05-01 15:10:23Z INFO JobServerQueue] Start process file upload queue.
+[2025-05-01 15:10:23Z INFO JobServerQueue] Start results file upload queue.
+[2025-05-01 15:10:23Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-05-01 15:10:23Z INFO JobServerQueue] Start process timeline update queue.
+[2025-05-01 15:10:23Z INFO ExecutionContext] Initialize GitHub context
+[2025-05-01 15:10:23Z INFO ExecutionContext] Initialize Env context
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:23Z INFO JobRunner] Starting the job execution context.
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:23Z INFO JobRunner] Validating directory permissions for: '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Tools': '/home/supamongkol_kid/projects/actions-runner/_work/_tool'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:23Z INFO JobRunner] Getting job extension.
+[2025-05-01 15:10:23Z INFO JobRunner] Initialize job. Getting all job steps.
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known config file 'Credentials': '/home/supamongkol_kid/projects/actions-runner/.credentials'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known config file 'SetupInfo': '/home/supamongkol_kid/projects/actions-runner/.setup_info'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:23Z INFO PipelineDirectoryManager] Loading tracking config if exists: /home/supamongkol_kid/projects/actions-runner/_work/_PipelineMapping/ball0803/alumni_api/PipelineFolder.json
+[2025-05-01 15:10:23Z INFO PipelineDirectoryManager] Updating job run properties.
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:23Z INFO JobExtension] Downloading actions
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:23Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:10:23Z INFO Worker] Listening for cancel message from the channel.
+[2025-05-01 15:10:23Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2025-05-01 15:10:24Z INFO ResultServer] Successfully started websocket client.
+[2025-05-01 15:10:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9c43ba42-15e0-4afa-b63e-c4996aec0ff1', success rate: 1/1.
+[2025-05-01 15:10:24Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2025-05-01 15:10:25Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:25Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:25Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:25Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:10:25Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:25Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:25Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:25Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:10:25Z INFO ActionManager] Save archive 'https://api.github.com/repos/actions/checkout/tarball/11bd71901bbe5b1630ceea73d27597364c9af683' into /home/supamongkol_kid/projects/actions-runner/_work/_actions/_temp_679b61ac-5393-42e9-a583-556773c07f9e/a3c8e050-016c-4e30-96c4-a7e96abd819f.tar.gz.
+[2025-05-01 15:10:25Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9c43ba42-15e0-4afa-b63e-c4996aec0ff1', success rate: 1/1.
+[2025-05-01 15:10:26Z INFO ActionManager] Request URL: https://api.github.com/repos/actions/checkout/tarball/11bd71901bbe5b1630ceea73d27597364c9af683 X-GitHub-Request-Id: 0D30:24806B:5C5E9:1147F2:68138EE2 Http Status: OK
+[2025-05-01 15:10:26Z INFO ActionManager] Which2: 'tar'
+[2025-05-01 15:10:26Z INFO ActionManager] Location: '/usr/bin/tar'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   File name: '/usr/bin/tar'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Arguments: '-xzf "/home/supamongkol_kid/projects/actions-runner/_work/_actions/_temp_679b61ac-5393-42e9-a583-556773c07f9e/a3c8e050-016c-4e30-96c4-a7e96abd819f.tar.gz"'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Working directory: '/home/supamongkol_kid/projects/actions-runner/_work/_actions/_temp_679b61ac-5393-42e9-a583-556773c07f9e/_staging'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper] Updated oom_score_adj to 500 for PID: 3068854.
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper] Process started with process id 3068854, waiting for process exit.
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper] Finished process 3068854 with exit code 0, and elapsed time 00:00:00.0203790.
+[2025-05-01 15:10:26Z INFO ActionManager] Finished getting action repository.
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-01 15:10:26Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:10:26Z INFO ActionManager] Load action that reference repository from '/home/supamongkol_kid/projects/actions-runner/_work/_actions/actions/checkout/v4'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-01 15:10:26Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-05-01 15:10:26Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-05-01 15:10:26Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-05-01 15:10:26Z INFO JobExtension] Adding .
+[2025-05-01 15:10:26Z INFO JobExtension] Adding .
+[2025-05-01 15:10:26Z INFO JobExtension] Adding .
+[2025-05-01 15:10:26Z INFO JobExtension] Adding .
+[2025-05-01 15:10:26Z INFO JobExtension] Adding .
+[2025-05-01 15:10:26Z INFO JobExtension] Adding .
+[2025-05-01 15:10:26Z INFO JobExtension] Adding .
+[2025-05-01 15:10:26Z INFO JobExtension] Adding .
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9c43ba42-15e0-4afa-b63e-c4996aec0ff1', success rate: 1/1.
+[2025-05-01 15:10:26Z INFO JobExtension] Total accessible running process: 230.
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:26Z INFO JobExtension] Start checking service connectivity in background.
+[2025-05-01 15:10:26Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "9c43ba42-15e0-4afa-b63e-c4996aec0ff1",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 4,
+  "startTime": "2025-05-01T15:10:23.6093826Z",
+  "finishTime": "2025-05-01T15:10:26.6586714Z"
+}.
+[2025-05-01 15:10:26Z INFO JobRunner] Total job steps: 8.
+[2025-05-01 15:10:26Z INFO JobRunner] Run all job steps.
+[2025-05-01 15:10:26Z INFO StepsRunner] Processing step: DisplayName='Checkout code'
+[2025-05-01 15:10:26Z INFO StepsRunner] Evaluating: success()
+[2025-05-01 15:10:26Z INFO StepsRunner] Result: true
+[2025-05-01 15:10:26Z INFO StepsRunner] Starting the step.
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:10:26Z INFO ActionManager] Load action that reference repository from '/home/supamongkol_kid/projects/actions-runner/_work/_actions/actions/checkout/v4'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-01 15:10:26Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-05-01 15:10:26Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-05-01 15:10:26Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-05-01 15:10:26Z INFO ExecutionContext] Reserve record order 10 to 18 for post job actions.
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:26Z INFO ExecutionContext] Write event payload to /home/supamongkol_kid/projects/actions-runner/_work/_temp/_github_workflow/event.json
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:26Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "ball0803/alumni_api"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 76,
+  "col": 14,
+  "lit": "1"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:10:26Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-05-01 15:10:26Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command error
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command group
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-05-01 15:10:26Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:26Z INFO HostContext] Well known directory 'Externals': '/home/supamongkol_kid/projects/actions-runner/externals'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   File name: '/home/supamongkol_kid/projects/actions-runner/externals/node20/bin/node'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Arguments: '"/home/supamongkol_kid/projects/actions-runner/_work/_actions/actions/checkout/v4/dist/index.js"'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Working directory: '/home/supamongkol_kid/projects/actions-runner/_work/alumni_api/alumni_api'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper] Updated oom_score_adj to 500 for PID: 3068857.
+[2025-05-01 15:10:26Z INFO ProcessInvokerWrapper] Process started with process id 3068857, waiting for process exit.
+[2025-05-01 15:10:26Z INFO AddMaskCommandExtension] Add new secret mask with length of 76
+[2025-05-01 15:10:26Z INFO JobServerQueue] Try to append 1 batches web console lines for record '775a1366-daa4-4a98-a97f-371a40edc0ac', success rate: 1/1.
+[2025-05-01 15:10:27Z INFO JobServerQueue] Try to append 1 batches web console lines for record '775a1366-daa4-4a98-a97f-371a40edc0ac', success rate: 1/1.
+[2025-05-01 15:10:27Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-05-01 15:10:27Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-05-01 15:10:27Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/supamongkol_kid/projects/actions-runner/_diag/blocks/304f5d7e-5d28-4f59-8904-e467a9c12fd8_9c43ba42-15e0-4afa-b63e-c4996aec0ff1.1
+[2025-05-01 15:10:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '775a1366-daa4-4a98-a97f-371a40edc0ac', success rate: 1/1.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Finished process 3068857 with exit code 0, and elapsed time 00:00:02.5492627.
+[2025-05-01 15:10:29Z INFO CreateStepSummaryCommand] Step Summary file (/home/supamongkol_kid/projects/actions-runner/_work/_temp/_runner_file_commands/step_summary_bf707b07-7672-4e02-ab25-cd469ae8701c) is empty; skipping attachment upload
+[2025-05-01 15:10:29Z INFO StepsRunner] Step result: 
+[2025-05-01 15:10:29Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "775a1366-daa4-4a98-a97f-371a40edc0ac",
+  "stepContextName": "__actions_checkout",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 3,
+  "startTime": "2025-05-01T15:10:26.6702155Z",
+  "finishTime": "2025-05-01T15:10:29.2716178Z"
+}.
+[2025-05-01 15:10:29Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-05-01 15:10:29Z INFO StepsRunner] Current state: job state = ''
+[2025-05-01 15:10:29Z INFO StepsRunner] Processing step: DisplayName='Create .env file'
+[2025-05-01 15:10:29Z INFO StepsRunner] Evaluating: success()
+[2025-05-01 15:10:29Z INFO StepsRunner] Result: true
+[2025-05-01 15:10:29Z INFO StepsRunner] Starting the step.
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:29Z INFO ExecutionContext] Write event payload to /home/supamongkol_kid/projects/actions-runner/_work/_temp/_github_workflow/event.json
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-05-01 15:10:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command error
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command group
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-05-01 15:10:29Z INFO ScriptHandler] Which2: 'bash'
+[2025-05-01 15:10:29Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:29Z INFO ScriptHandler] Which2: 'bash'
+[2025-05-01 15:10:29Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   File name: '/usr/bin/bash'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Arguments: '--noprofile --norc -e -o pipefail /home/supamongkol_kid/projects/actions-runner/_work/_temp/ea1d873a-f5a8-47df-904d-2e2c9e1f0b3d.sh'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Working directory: '/home/supamongkol_kid/projects/actions-runner/_work/alumni_api/alumni_api'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Updated oom_score_adj to 500 for PID: 3068974.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Process started with process id 3068974, waiting for process exit.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Finished process 3068974 with exit code 0, and elapsed time 00:00:00.0030103.
+[2025-05-01 15:10:29Z INFO CreateStepSummaryCommand] Step Summary file (/home/supamongkol_kid/projects/actions-runner/_work/_temp/_runner_file_commands/step_summary_54e6ee41-eb87-4177-8946-237b355a3c91) is empty; skipping attachment upload
+[2025-05-01 15:10:29Z INFO StepsRunner] Step result: 
+[2025-05-01 15:10:29Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "bash",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "44e1d756-2b27-4745-99de-19b2a3266adc",
+  "stepContextName": "__run",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-05-01T15:10:29.2725242Z",
+  "finishTime": "2025-05-01T15:10:29.296071Z"
+}.
+[2025-05-01 15:10:29Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-05-01 15:10:29Z INFO StepsRunner] Current state: job state = ''
+[2025-05-01 15:10:29Z INFO StepsRunner] Processing step: DisplayName='Determine deployment color'
+[2025-05-01 15:10:29Z INFO StepsRunner] Evaluating: success()
+[2025-05-01 15:10:29Z INFO StepsRunner] Result: true
+[2025-05-01 15:10:29Z INFO StepsRunner] Starting the step.
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:29Z INFO ExecutionContext] Write event payload to /home/supamongkol_kid/projects/actions-runner/_work/_temp/_github_workflow/event.json
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-05-01 15:10:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command error
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command group
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-05-01 15:10:29Z INFO ScriptHandler] Which2: 'bash'
+[2025-05-01 15:10:29Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:29Z INFO ScriptHandler] Which2: 'bash'
+[2025-05-01 15:10:29Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   File name: '/usr/bin/bash'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Arguments: '-e /home/supamongkol_kid/projects/actions-runner/_work/_temp/7596a8bd-6c2d-4c03-ba19-6fbbaa098fe8.sh'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Working directory: '/home/supamongkol_kid/projects/actions-runner/_work/alumni_api/alumni_api'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Updated oom_score_adj to 500 for PID: 3068976.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Process started with process id 3068976, waiting for process exit.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Finished process 3068976 with exit code 0, and elapsed time 00:00:00.0225574.
+[2025-05-01 15:10:29Z INFO CreateStepSummaryCommand] Step Summary file (/home/supamongkol_kid/projects/actions-runner/_work/_temp/_runner_file_commands/step_summary_9936d624-32ba-4b7d-8965-56afdd09464c) is empty; skipping attachment upload
+[2025-05-01 15:10:29Z INFO StepsRunner] Step result: 
+[2025-05-01 15:10:29Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "sh",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "ab5589d7-01fb-4b2c-8a4c-d1fb340b1e80",
+  "stepContextName": "color",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-05-01T15:10:29.2966522Z",
+  "finishTime": "2025-05-01T15:10:29.329972Z"
+}.
+[2025-05-01 15:10:29Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-05-01 15:10:29Z INFO StepsRunner] Current state: job state = ''
+[2025-05-01 15:10:29Z INFO StepsRunner] Processing step: DisplayName='Build and Deploy new container'
+[2025-05-01 15:10:29Z INFO StepsRunner] Evaluating: success()
+[2025-05-01 15:10:29Z INFO StepsRunner] Result: true
+[2025-05-01 15:10:29Z INFO StepsRunner] Starting the step.
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:29Z INFO ExecutionContext] Write event payload to /home/supamongkol_kid/projects/actions-runner/_work/_temp/_github_workflow/event.json
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-05-01 15:10:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command error
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command group
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-05-01 15:10:29Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-05-01 15:10:29Z INFO ScriptHandler] Which2: 'bash'
+[2025-05-01 15:10:29Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:29Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:10:29Z INFO ScriptHandler] Which2: 'bash'
+[2025-05-01 15:10:29Z INFO ScriptHandler] Location: '/usr/bin/bash'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   File name: '/usr/bin/bash'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Arguments: '-e /home/supamongkol_kid/projects/actions-runner/_work/_temp/4c3343b5-6e67-47d7-b889-0f22f43822a1.sh'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Working directory: '/home/supamongkol_kid/projects/actions-runner/_work/alumni_api/alumni_api'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Updated oom_score_adj to 500 for PID: 3068984.
+[2025-05-01 15:10:29Z INFO ProcessInvokerWrapper] Process started with process id 3068984, waiting for process exit.
+[2025-05-01 15:10:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '775a1366-daa4-4a98-a97f-371a40edc0ac', success rate: 1/1.
+[2025-05-01 15:10:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '44e1d756-2b27-4745-99de-19b2a3266adc', success rate: 1/1.
+[2025-05-01 15:10:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ab5589d7-01fb-4b2c-8a4c-d1fb340b1e80', success rate: 1/1.
+[2025-05-01 15:10:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:29Z INFO JobServerQueue] Try to upload 3 log files or attachments, success rate: 3/3.
+[2025-05-01 15:10:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:30Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-05-01 15:10:31Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-05-01 15:10:31Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/supamongkol_kid/projects/actions-runner/_diag/blocks/304f5d7e-5d28-4f59-8904-e467a9c12fd8_775a1366-daa4-4a98-a97f-371a40edc0ac.1
+[2025-05-01 15:10:31Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:32Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-05-01 15:10:32Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/supamongkol_kid/projects/actions-runner/_diag/blocks/304f5d7e-5d28-4f59-8904-e467a9c12fd8_44e1d756-2b27-4745-99de-19b2a3266adc.1
+[2025-05-01 15:10:32Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-05-01 15:10:32Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/supamongkol_kid/projects/actions-runner/_diag/blocks/304f5d7e-5d28-4f59-8904-e467a9c12fd8_ab5589d7-01fb-4b2c-8a4c-d1fb340b1e80.1
+[2025-05-01 15:10:33Z INFO JobServerQueue] Tried to upload 3 file(s) to results, success rate: 3/3.
+[2025-05-01 15:10:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:36Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:36Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:36Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:38Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:38Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:38Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:38Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:42Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:42Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:42Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:42Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:46Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:46Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:46Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:56Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:10:56Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:10:56Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:10:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:10:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper] Finished process 3068984 with exit code 1, and elapsed time 00:00:31.2563191.
+[2025-05-01 15:11:00Z INFO CreateStepSummaryCommand] Step Summary file (/home/supamongkol_kid/projects/actions-runner/_work/_temp/_runner_file_commands/step_summary_354076bc-222c-4986-a65a-40a17cbf3524) is empty; skipping attachment upload
+[2025-05-01 15:11:00Z INFO StepsRunner] Step result: Failed
+[2025-05-01 15:11:00Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "sh",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "8c20d00a-39f4-44fe-9dd0-ed200e8564a2",
+  "stepContextName": "__run_2",
+  "result": "failed",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 32,
+  "startTime": "2025-05-01T15:10:29.3308874Z",
+  "finishTime": "2025-05-01T15:11:00.5991758Z"
+}.
+[2025-05-01 15:11:00Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2025-05-01 15:11:00Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-01 15:11:00Z INFO StepsRunner] Processing step: DisplayName='Check Health'
+[2025-05-01 15:11:00Z INFO StepsRunner] Evaluating: success()
+[2025-05-01 15:11:00Z INFO StepsRunner] Result: false
+[2025-05-01 15:11:00Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-05-01 15:11:00Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-05-01 15:11:00Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-01 15:11:00Z INFO StepsRunner] Processing step: DisplayName='Switch traffic'
+[2025-05-01 15:11:00Z INFO StepsRunner] Evaluating: success()
+[2025-05-01 15:11:00Z INFO StepsRunner] Result: false
+[2025-05-01 15:11:00Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-05-01 15:11:00Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-05-01 15:11:00Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-01 15:11:00Z INFO StepsRunner] Processing step: DisplayName='Stop old container'
+[2025-05-01 15:11:00Z INFO StepsRunner] Evaluating: success()
+[2025-05-01 15:11:00Z INFO StepsRunner] Result: false
+[2025-05-01 15:11:00Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-05-01 15:11:00Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-05-01 15:11:00Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-01 15:11:00Z INFO StepsRunner] Processing step: DisplayName='Clean up'
+[2025-05-01 15:11:00Z INFO StepsRunner] Evaluating: success()
+[2025-05-01 15:11:00Z INFO StepsRunner] Result: false
+[2025-05-01 15:11:00Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-05-01 15:11:00Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-05-01 15:11:00Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-01 15:11:00Z INFO StepsRunner] Processing step: DisplayName='Post Checkout code'
+[2025-05-01 15:11:00Z INFO StepsRunner] Evaluating: always()
+[2025-05-01 15:11:00Z INFO StepsRunner] Result: true
+[2025-05-01 15:11:00Z INFO StepsRunner] Starting the step.
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:11:00Z INFO ActionManager] Load action that reference repository from '/home/supamongkol_kid/projects/actions-runner/_work/_actions/actions/checkout/v4'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Actions': '/home/supamongkol_kid/projects/actions-runner/_work/_actions'
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-01 15:11:00Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-05-01 15:11:00Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-05-01 15:11:00Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:11:00Z INFO ExecutionContext] Write event payload to /home/supamongkol_kid/projects/actions-runner/_work/_temp/_github_workflow/event.json
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Work': '/home/supamongkol_kid/projects/actions-runner/_work'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Temp': '/home/supamongkol_kid/projects/actions-runner/_work/_temp'
+[2025-05-01 15:11:00Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "ball0803/alumni_api"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 76,
+  "col": 14,
+  "lit": "1"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-01 15:11:00Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-05-01 15:11:00Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command error
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command group
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-05-01 15:11:00Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Externals': '/home/supamongkol_kid/projects/actions-runner/externals'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   File name: '/home/supamongkol_kid/projects/actions-runner/externals/node20/bin/node'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   Arguments: '"/home/supamongkol_kid/projects/actions-runner/_work/_actions/actions/checkout/v4/dist/index.js"'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   Working directory: '/home/supamongkol_kid/projects/actions-runner/_work/alumni_api/alumni_api'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper] Updated oom_score_adj to 500 for PID: 3071439.
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper] Process started with process id 3071439, waiting for process exit.
+[2025-05-01 15:11:00Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-05-01 15:11:00Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/supamongkol_kid/projects/actions-runner/_diag/blocks/304f5d7e-5d28-4f59-8904-e467a9c12fd8_8c20d00a-39f4-44fe-9dd0-ed200e8564a2.1
+[2025-05-01 15:11:00Z INFO AddMaskCommandExtension] Add new secret mask with length of 32
+[2025-05-01 15:11:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8c20d00a-39f4-44fe-9dd0-ed200e8564a2', success rate: 1/1.
+[2025-05-01 15:11:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84ea2bfb-3e73-4d80-a12a-4fbcbc4533f6', success rate: 1/1.
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-01 15:11:00Z INFO ProcessInvokerWrapper] Finished process 3071439 with exit code 0, and elapsed time 00:00:00.2063483.
+[2025-05-01 15:11:00Z INFO CreateStepSummaryCommand] Step Summary file (/home/supamongkol_kid/projects/actions-runner/_work/_temp/_runner_file_commands/step_summary_64f32698-60f6-4d57-9ad8-1bd18beec6ec) is empty; skipping attachment upload
+[2025-05-01 15:11:00Z INFO StepsRunner] Step result: 
+[2025-05-01 15:11:00Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Post",
+  "stepId": "84ea2bfb-3e73-4d80-a12a-4fbcbc4533f6",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-05-01T15:11:00.6023471Z",
+  "finishTime": "2025-05-01T15:11:00.81733Z"
+}.
+[2025-05-01 15:11:00Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-05-01 15:11:00Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-01 15:11:00Z INFO JobRunner] Finalize job.
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:11:00Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:11:00Z INFO JobExtension] Initialize Env context
+[2025-05-01 15:11:00Z INFO JobExtension] Initialize steps context
+[2025-05-01 15:11:00Z INFO JobExtension] Total accessible running process: 226.
+[2025-05-01 15:11:00Z INFO JobExtension] Inspecting process environment variables. PID: 3024874 (kworker/u16:5-flush-8:0)
+[2025-05-01 15:11:00Z INFO LinuxProcessExtensions] Read env from /proc/3024874/environ
+[2025-05-01 15:11:00Z WARN JobExtension] Ignore exception during read process environment variables: Access to the path '/proc/3024874/environ' is denied.
+[2025-05-01 15:11:00Z INFO JobExtension] Inspecting process environment variables. PID: 3028681 (kworker/u16:1-flush-8:0)
+[2025-05-01 15:11:00Z INFO LinuxProcessExtensions] Read env from /proc/3028681/environ
+[2025-05-01 15:11:00Z WARN JobExtension] Ignore exception during read process environment variables: Access to the path '/proc/3028681/environ' is denied.
+[2025-05-01 15:11:00Z INFO JobExtension] Inspecting process environment variables. PID: 3066922 (kworker/1:0-events)
+[2025-05-01 15:11:00Z INFO LinuxProcessExtensions] Read env from /proc/3066922/environ
+[2025-05-01 15:11:00Z WARN JobExtension] Ignore exception during read process environment variables: Access to the path '/proc/3066922/environ' is denied.
+[2025-05-01 15:11:00Z INFO JobExtension] Inspecting process environment variables. PID: 3071384 (kworker/0:1)
+[2025-05-01 15:11:00Z INFO LinuxProcessExtensions] Read env from /proc/3071384/environ
+[2025-05-01 15:11:00Z WARN JobExtension] Ignore exception during read process environment variables: Access to the path '/proc/3071384/environ' is denied.
+[2025-05-01 15:11:00Z INFO JobExtension] Inspecting process environment variables. PID: 3071397 ((udev-worker))
+[2025-05-01 15:11:00Z INFO LinuxProcessExtensions] Read env from /proc/3071397/environ
+[2025-05-01 15:11:00Z WARN JobExtension] Ignore exception during read process environment variables: Access to the path '/proc/3071397/environ' is denied.
+[2025-05-01 15:11:00Z INFO JobExtension] Inspecting process environment variables. PID: 3071407 ((udev-worker))
+[2025-05-01 15:11:00Z INFO LinuxProcessExtensions] Read env from /proc/3071407/environ
+[2025-05-01 15:11:00Z WARN JobExtension] Ignore exception during read process environment variables: Access to the path '/proc/3071407/environ' is denied.
+[2025-05-01 15:11:00Z INFO JobExtension] Inspecting process environment variables. PID: 3071408 (kworker/u16:0-writeback)
+[2025-05-01 15:11:00Z INFO LinuxProcessExtensions] Read env from /proc/3071408/environ
+[2025-05-01 15:11:00Z WARN JobExtension] Ignore exception during read process environment variables: Access to the path '/proc/3071408/environ' is denied.
+[2025-05-01 15:11:00Z INFO JobExtension] Inspecting process environment variables. PID: 3071409 (kworker/u16:3)
+[2025-05-01 15:11:00Z INFO LinuxProcessExtensions] Read env from /proc/3071409/environ
+[2025-05-01 15:11:00Z WARN JobExtension] Ignore exception during read process environment variables: Access to the path '/proc/3071409/environ' is denied.
+[2025-05-01 15:11:00Z INFO JobExtension] Inspecting process environment variables. PID: 3071410 (kworker/u16:7-ext4-rsv-conversion)
+[2025-05-01 15:11:00Z INFO LinuxProcessExtensions] Read env from /proc/3071410/environ
+[2025-05-01 15:11:00Z WARN JobExtension] Ignore exception during read process environment variables: Access to the path '/proc/3071410/environ' is denied.
+[2025-05-01 15:11:00Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "f247c73c-d4a2-408f-897c-c7bc0cc7b174",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-05-01T15:11:00.821995Z",
+  "finishTime": "2025-05-01T15:11:00.8774245Z"
+}.
+[2025-05-01 15:11:00Z INFO JobRunner] Job result after all job steps finish: Failed
+[2025-05-01 15:11:00Z INFO JobRunner] Completing the job execution context.
+[2025-05-01 15:11:00Z INFO JobRunner] Shutting down the job server queue.
+[2025-05-01 15:11:00Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2025-05-01 15:11:01Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-05-01 15:11:02Z INFO JobServerQueue] All queue process task stopped.
+[2025-05-01 15:11:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84ea2bfb-3e73-4d80-a12a-4fbcbc4533f6', success rate: 1/1.
+[2025-05-01 15:11:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f247c73c-d4a2-408f-897c-c7bc0cc7b174', success rate: 1/1.
+[2025-05-01 15:11:02Z INFO JobServerQueue] Web console line queue drained.
+[2025-05-01 15:11:02Z INFO JobServerQueue] Uploading 4 files in one shot.
+[2025-05-01 15:11:02Z INFO JobServerQueue] Try to upload 4 log files or attachments, success rate: 4/4.
+[2025-05-01 15:11:02Z INFO JobServerQueue] File upload queue drained.
+[2025-05-01 15:11:02Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-05-01 15:11:02Z INFO JobServerQueue] Uploading 3 file(s) in one shot through results service.
+[2025-05-01 15:11:02Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-05-01 15:11:02Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/supamongkol_kid/projects/actions-runner/_diag/blocks/304f5d7e-5d28-4f59-8904-e467a9c12fd8_84ea2bfb-3e73-4d80-a12a-4fbcbc4533f6.1
+[2025-05-01 15:11:03Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-05-01 15:11:03Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, /home/supamongkol_kid/projects/actions-runner/_diag/blocks/304f5d7e-5d28-4f59-8904-e467a9c12fd8_f247c73c-d4a2-408f-897c-c7bc0cc7b174.1
+[2025-05-01 15:11:04Z INFO JobServerQueue] Got a job log file to send to results service.
+[2025-05-01 15:11:04Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, /home/supamongkol_kid/projects/actions-runner/_diag/blocks/304f5d7e-5d28-4f59-8904-e467a9c12fd8_3eb8d666-c790-5a05-928a-2d934621e90e.1
+[2025-05-01 15:11:05Z INFO JobServerQueue] Tried to upload 3 file(s) to results, success rate: 3/3.
+[2025-05-01 15:11:05Z INFO JobServerQueue] Results upload queue drained.
+[2025-05-01 15:11:05Z INFO JobServerQueue] Timeline update queue drained.
+[2025-05-01 15:11:05Z INFO JobServerQueue] Disposing job server ...
+[2025-05-01 15:11:05Z INFO JobServerQueue] Disposing results server ...
+[2025-05-01 15:11:05Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2025-05-01 15:11:05Z INFO TempDirectoryManager] Cleaning runner temp folder: /home/supamongkol_kid/projects/actions-runner/_work/_temp
+[2025-05-01 15:11:05Z INFO HostContext] Well known directory 'Bin': '/home/supamongkol_kid/projects/actions-runner/bin'
+[2025-05-01 15:11:05Z INFO HostContext] Well known directory 'Root': '/home/supamongkol_kid/projects/actions-runner'
+[2025-05-01 15:11:05Z INFO HostContext] Well known directory 'Diag': '/home/supamongkol_kid/projects/actions-runner/_diag'
+[2025-05-01 15:11:05Z INFO HostContext] Well known config file 'Telemetry': '/home/supamongkol_kid/projects/actions-runner/_diag/.telemetry'
+[2025-05-01 15:11:05Z INFO JobRunner] Raising job completed against run service
+[2025-05-01 15:11:06Z INFO Worker] Job completed.

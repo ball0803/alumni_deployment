@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 21,
+  "agentName": "CPE-Alumni-VM",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus2.actions.githubusercontent.com/MPPTUrv1NDafMr740zzkpCZcW7mJbtCXGhbw58GJK0RrJU1Shf/",
+  "gitHubUrl": "https://github.com/ball0803/alumni_api",
+  "workFolder": "_work"
+}
