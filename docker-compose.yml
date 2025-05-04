@@ -85,10 +85,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: alumni-frontend
+    container_name: alumni-frontend-nginx
     restart: always
-    ports:
-      - "5173:5173"
     networks:
       - alumni-network
 
@@ -109,6 +107,7 @@ services:
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
       - AES_ENCRYPTION_KEY=${AES_ENCRYPTION_KEY}
       - SENDER_GMAIL=${SENDER_GMAIL}
+      - CLIENT=${CLIENT}
       - SMTP_PASSWORD=${SMTP_PASSWORD}
       - PORT=${PORT}
       - ENV=${ENV}
@@ -147,6 +146,7 @@ services:
       - AES_ENCRYPTION_KEY=${AES_ENCRYPTION_KEY}
       - SENDER_GMAIL=${SENDER_GMAIL}
       - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - CLIENT=${CLIENT}
       - PORT=${PORT}
       - ENV=${ENV}
     healthcheck:
