@@ -81,7 +81,16 @@ services:
         max-buffer-size: 4m
         loki-retries: "3"
 
-  alumni-frontend:
+  alumni-frontend-green:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: alumni-frontend-nginx
+    restart: always
+    networks:
+      - alumni-network
+
+  alumni-frontend-blue:
     build:
       context: ./frontend
       dockerfile: Dockerfile
